@@ -1,4 +1,5 @@
 import openpyxl
+import datetime
 
 import base
 
@@ -15,7 +16,7 @@ sheet1['A1'] = "年份"
 sheet1['B1'] = "编辑数"
 
 # 第二个工作表
-sheet2 = wb.create_sheet("按月计")
+sheet2 = wb.create_sheet("按1-12月计")
 sheet2['A1'] = "月份"
 sheet2['B1'] = "编辑数"
 
@@ -41,7 +42,7 @@ while row < 9: # 第三个表格内容初始化
     row += 1
 
 # 第四个工作表
-sheet4 = wb.create_sheet("按天计")
+sheet4 = wb.create_sheet("按1-31日计")
 sheet4['A1'] = "天数"
 sheet4['B1'] = "编辑数"
 
@@ -101,8 +102,17 @@ sheet8['A1'] = "年月"
 sheet8['B1'] = "编辑数"
 sheet8.column_dimensions['A'].width = 12.00
 
+# 第九个工作表
+sheet9 = wb.create_sheet("按年月日计")
+sheet9['A1'] = "年月日"
+sheet9['B1'] = "编辑数"
+sheet9.column_dimensions['A'].width = 12.00
+
 year_dict = {}
 year_month_dict = {}
+year_month_day_dict = {}
+min_date = None
+max_date = None
 
 for item in contribs_data:
     dt = base.extract_from_timestamp(item["timestamp"])
@@ -112,6 +122,15 @@ for item in contribs_data:
 
     year_month_key = f"{dt.year}-{dt.month:02d}"
     year_month_dict[year_month_key] = year_month_dict.get(year_month_key, 0) + 1
+
+    year_month_day_key = f"{dt.year}-{dt.month:02d}-{dt.day:02d}"
+    year_month_day_dict[year_month_day_key] = year_month_day_dict.get(year_month_day_key, 0) + 1
+
+    d_only = dt.date()
+    if min_date is None or d_only < min_date:
+        min_date = d_only
+    if max_date is None or d_only > max_date:
+        max_date = d_only
 
     month = dt.month
     sheet2.cell(row=month+1, column=2).value += 1
@@ -142,6 +161,17 @@ for ym in sorted(year_month_dict):
     sheet8[f'A{row}'] = ym
     sheet8[f'B{row}'] = year_month_dict[ym]
     row += 1
+
+row = 2
+if min_date is not None and max_date is not None:
+    cur = min_date
+    one_day = datetime.timedelta(days=1)
+    while cur <= max_date:
+        ymd = cur.strftime("%Y-%m-%d")
+        sheet9[f'A{row}'] = ymd
+        sheet9[f'B{row}'] = year_month_day_dict.get(ymd, 0)
+        row += 1
+        cur += one_day
 
 current_time = datafile[-14:]
 wb.save(f"{username}-editperiod-{current_time}.xlsx")
