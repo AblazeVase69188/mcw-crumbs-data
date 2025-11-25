@@ -1,0 +1,49 @@
+{
+    "wiki": "zh",
+    "timezone": "8",
+    "user_agent": "",
+    "max_retries": "1",
+    "retry_delay": "20",
+    "username": "username@botpasswordname",
+    "password": "randomstring",
+    "difftime": {
+        "num_diff": "114514",
+        "minrev": "",
+        "maxrev": "1919810"
+    },
+    "usercontribs": {
+        "username": "MediaWiki_default-gpuser",
+        "starttime": "2000-12-03T19:09:19Z",
+        "endtime": ""
+    },
+    "editperiod": {
+        "datafile": "usercontribs-username-20250620204213"
+    },
+    "activeusers": {
+        "mode": "standard",
+        "usergroup_order": [
+            "bureaucrat",
+            "sysop",
+            "patrollers",
+            "interface-admin",
+            "autopatrol",
+            "bot"
+        ],
+        "usergroup_mapping": {
+            "bureaucrat": "行政员",
+            "sysop": "管理员",
+            "patrollers": "巡查员",
+            "interface-admin": "界面管理员",
+            "autopatrol": "巡查豁免者",
+            "bot": "机器人"
+        }
+    },
+    "checkhiddenrc": {
+        "starttime": "2025-06-30T01:23:45Z",
+        "endtime": ""
+    },
+    "patrolintegration": {
+        "starttime": "2023-11-12T00:00:00Z",
+        "endtime": ""
+    }
+}
