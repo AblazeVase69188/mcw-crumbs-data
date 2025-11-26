@@ -75,6 +75,6 @@ write_sheet(sheet2, bin_100)
 write_sheet(sheet1, bin_1000)
 
 current_time = datafile[-14:]
-wb.save(f"{username}-editsize-{current_time}.xlsx")
+base.output(f"{username}-editsize-{current_time}.xlsx", wb, "xlsx")
 
 print(f"结果已保存至{username}-editsize-{current_time}.xlsx")

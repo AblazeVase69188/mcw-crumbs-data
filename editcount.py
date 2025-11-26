@@ -123,7 +123,7 @@ if hidden:
     ws.cell(row=current_row, column=2, value="（用户名已移除）")
     ws.cell(row=current_row, column=3, value=hidden)
 
-wb.save(excel_filename)
+base.output(excel_filename, wb, "xlsx")
 print(f"Excel结果已保存至{excel_filename}")
 
 TOP_N = 1000
@@ -147,7 +147,7 @@ if len(sorted_data) > TOP_N:
         ws_top.cell(row=current_row, column=2, value="（用户名已移除）")
         ws_top.cell(row=current_row, column=3, value=hidden)
 
-    wb_top.save(top_filename)
+    base.output(top_filename, wb_top, "xlsx")
     print(f"前{TOP_N}名已保存至{top_filename}")
 
 if os.path.exists("editcount_backup.json"):

@@ -2,6 +2,7 @@ import json
 import sys
 import time
 import re
+from pathlib import Path
 
 import requests
 import datetime
@@ -30,8 +31,9 @@ def usercontribs_get_config():  # usercontribs.py读取配置
 def editperiod_get_config():  # editperiod.py读取配置
     editperiod_config = config.get("editperiod", {})
     datafile = editperiod_config.get("datafile")
+    file_path = Path("output") / f"{datafile}.json"
     try:
-        with open(f"{datafile}.json", "r", encoding="utf-8") as contribs_file:
+        with open(file_path, "r", encoding="utf-8") as contribs_file:
             contribs_data = json.load(contribs_file)
     except FileNotFoundError:
         print("指定的文件不存在！")
@@ -165,6 +167,20 @@ def is_ip_address(s):
             re.match(ipv4_pattern, s) is not None or
             re.match(ipv6_pattern, s) is not None
     )
+
+
+def output(filename, data, extension):  # 将文件输出到output文件夹
+    out_dir = Path("output")
+    out_dir.mkdir(exist_ok=True)
+    output_filename = out_dir / filename
+    if extension == "xlsx":
+        data.save(output_filename)
+    elif extension == "json":
+        with open(output_filename, "w", encoding="utf-8") as output_file:
+            json.dump(data, output_file, ensure_ascii=False, indent=4)
+    else:
+        with open(output_filename, "w", encoding="utf-8") as output_file:
+            output_file.write(data)
 
 
 with open("config.json", "r", encoding="utf-8") as config_file:

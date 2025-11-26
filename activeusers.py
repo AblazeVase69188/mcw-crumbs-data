@@ -175,7 +175,7 @@ for idx, (user, count, group_name) in enumerate(sorted_data):
     ws.cell(row=row_idx, column=3, value=count)
     ws.cell(row=row_idx, column=4, value=group_name)
 
-wb.save(excel_filename)
+base.output(excel_filename, wb, "xlsx")
 print(f"Excel结果已保存至{excel_filename}")
 
 # 将排序后的内容变为wikitable
@@ -206,8 +206,7 @@ for idx, (user, count, group_name) in enumerate(sorted_data):
 wiki_content += "|}"
 
 # 将wikitable写入文本文件
-with open(txt_filename, "w", encoding="utf-8") as f:
-    f.write(wiki_content)
+base.output(txt_filename, wiki_content, "txt")
 print(f"Wiki表格已保存至{txt_filename}")
 
 '''

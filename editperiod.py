@@ -174,6 +174,6 @@ if min_date is not None and max_date is not None:
         cur += one_day
 
 current_time = datafile[-14:]
-wb.save(f"{username}-editperiod-{current_time}.xlsx")
+base.output(f"{username}-editperiod-{current_time}.xlsx", wb, "xlsx")
 
 print(f"结果已保存至{username}-editperiod-{current_time}.xlsx")

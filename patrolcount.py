@@ -113,7 +113,7 @@ for idx, (user, count) in enumerate(sorted_data):
     ws.cell(row=row_idx, column=2, value=user)
     ws.cell(row=row_idx, column=3, value=count)
 
-wb.save(excel_filename)
+base.output(excel_filename, wb, "xlsx")
 print(f"Excel结果已保存至{excel_filename}")
 
 if os.path.exists("patrolcount_backup.json"):

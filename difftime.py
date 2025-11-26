@@ -129,7 +129,7 @@ while rev < maxrev: # 主循环
         if 'error' in torev_data and torev < maxrev:
             torev = torev + 1
 
-wb.save(f"difftime-{current_time}.xlsx")
+base.output(f"difftime-{current_time}.xlsx", wb, "xlsx")
 print(f"结果已保存至difftime-{current_time}.xlsx")
 
 if os.path.exists("difftime_backup.xlsx"):

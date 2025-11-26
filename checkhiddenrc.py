@@ -1,5 +1,6 @@
 import time
 from bisect import bisect_left
+from datetime import datetime
 
 import base
 
@@ -38,6 +39,8 @@ last_rccontinue = ""
 last_arvcontinue = ""
 
 base.login()
+
+current_time = datetime.now().strftime("%Y%m%d%H%M%S")
 
 print("启动成功", end='\n\n')
 
@@ -99,5 +102,11 @@ for revid in arv_data:
     if revid not in rc_revids and revid not in exclude_revids:
         hidden_data.append(revid)
 
+output_lines = []
 for revid in hidden_data:
+    output_lines.append(f"{base.WIKI_BASE_URL}/?diff={revid}")
     print(f"{base.WIKI_BASE_URL}/?diff={revid}")
+
+output_filename = f"hiddenrc_{current_time}.txt"
+base.output(output_filename, "\n".join(output_lines), "txt")
+print(f"结果已保存至{output_filename}")

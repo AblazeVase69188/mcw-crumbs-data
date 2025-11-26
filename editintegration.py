@@ -127,6 +127,6 @@ chart_anchor_cell = f"{openpyxl.utils.get_column_letter(chart_anchor_col)}1"
 ws.add_chart(chart, chart_anchor_cell)
 
 current_time = datafile[-14:]
-wb.save(f"{username}-editintegration-{current_time}.xlsx")
+base.output(f"{username}-editintegration-{current_time}.xlsx", wb, "xlsx")
 
 print(f"结果已保存至{username}-editintegration-{current_time}.xlsx")

@@ -45,6 +45,6 @@ ws.cell(row=row, column=3).value = total_edit
 ws.cell(row=row, column=4).value = "100.00%"
 
 current_time = datafile[-14:]
-wb.save(f"{username}-editnamespace-{current_time}.xlsx")
+base.output(f"{username}-editnamespace-{current_time}.xlsx", wb, "xlsx")
 
 print(f"结果已保存至{username}-editnamespace-{current_time}.xlsx")
