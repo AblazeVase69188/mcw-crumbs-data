@@ -183,11 +183,17 @@ def output(filename, data, extension):  # 将文件输出到output文件夹
             output_file.write(data)
 
 
+def sleep():  # 请求间隔
+    if request_interval > 0:
+        time.sleep(request_interval)
+
+
 with open("config.json", "r", encoding="utf-8") as config_file:
     config = json.load(config_file)
     wiki = config["wiki"]
     user_agent = config["user_agent"]
     timezone = int(config["timezone"])
+    request_interval = float(config["request_interval"])
     max_retries = int(config["max_retries"])
     retry_delay = int(config["retry_delay"])
     username = config["username"] if "username" in config else None

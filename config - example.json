@@ -2,6 +2,7 @@
     "wiki": "zh",
     "timezone": "8",
     "user_agent": "",
+    "request_interval": "3",
     "max_retries": "1",
     "retry_delay": "20",
     "username": "username@botpasswordname",

@@ -34,7 +34,7 @@ base.login()
 print("启动成功", end='\n\n')
 
 while True:
-    time.sleep(3)
+    base.sleep()
 
     if last_uccontinue != "":
         last_params = params.copy()

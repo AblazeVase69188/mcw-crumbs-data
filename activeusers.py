@@ -81,7 +81,7 @@ base.login()
 print("启动成功", end='\n\n')
 
 while True: # 获取过去一个月的最近更改详情
-    time.sleep(3)
+    base.sleep()
 
     if last_rccontinue != "": # 不是首次循环，使用这个继续
         last_params = params.copy()

@@ -45,7 +45,7 @@ current_time = datetime.now().strftime("%Y%m%d%H%M%S")
 print("启动成功", end='\n\n')
 
 while True:
-    time.sleep(3)
+    base.sleep()
 
     if last_rccontinue != "":  # 不是首次循环，使用这个继续
         base_params.update({
