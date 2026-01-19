@@ -12,7 +12,7 @@ params = {
     "format": "json",
     "list": "logevents",
     "formatversion": 2,
-    "leprop": "user",
+    "leprop": "user|details",
     "leaction": "patrol/patrol",
     "lelimit": "max",
 }
@@ -64,6 +64,8 @@ while True: # 获取所有巡查日志的内容
     print(f"成功获取第{loop_count}组数据")
 
     for item in le_data['query']['logevents']:
+        if item["params"].get("auto", False):  # 自动巡查操作不统计
+            continue
         username = item["user"]
         # 更新计数：存在则+1，不存在则初始化为1
         user_list[username] = user_list.get(username, 0) + 1
