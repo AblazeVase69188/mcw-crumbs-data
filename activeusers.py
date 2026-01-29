@@ -20,9 +20,10 @@ if mode == "standard": # 标准模式
         day1 = 25
 
     end_time = now.replace(day=day2, hour=0, minute=0, second=0)
-    start_time = end_time.replace(day=day1, month=month - 1)
-    if start_time.month == 0:
-        start_time = start_time.replace(year=year - 1, month=12)
+    if month == 1:
+        start_time = end_time.replace(year=year - 1, month=12)
+    else:
+        start_time = end_time.replace(day=day1, month=month - 1)
 
     start_date_str = f"{start_time.year}年{start_time.month}月{start_time.day}日0时"
     end_date_str = f"{end_time.year}年{end_time.month}月{end_time.day}日0时"
