@@ -143,9 +143,12 @@ for user in usergroups_data['query']['allusers']:
 
 sorted_data = []
 
-# 过滤IP用户，将用户组信息放入列表
+# 过滤IP用户和临时用户，将用户组信息放入列表
 for user, count in user_list.items():
     if base.is_ip_address(user):
+        continue
+
+    if user.startswith("~20"):
         continue
 
     # 获取用户组信息
