@@ -95,11 +95,14 @@ while True: # 获取过去一个月的最近更改详情
     print(f"成功获取第{loop_count}组数据")
 
     for item in rc_data['query']['recentchanges']:
+        if item.get('userhidden'): # 用户名已移除，忽略
+            continue
+
         if item['type'] == "log":
-            if 'actionhidden' in item:
-                if 'userhidden' in item: # 用户名已移除，忽略
-                    continue
-            elif item['logtype'] == "newusers": # 用户创建日志不计入操作数
+            if item.get('actionhidden'): # 日志详情已移除，忽略
+                continue
+
+            if item['logtype'] == "newusers": # 用户创建日志不计入操作数
                 continue
 
         username = item["user"]
