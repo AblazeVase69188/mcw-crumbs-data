@@ -25,6 +25,7 @@
         "usergroup_order": [
             "bureaucrat",
             "sysop",
+            "moderators",
             "patrollers",
             "interface-admin",
             "autopatrol",
@@ -33,6 +34,7 @@
         "usergroup_mapping": {
             "bureaucrat": "行政员",
             "sysop": "管理员",
+            "moderators": "协管员",
             "patrollers": "巡查员",
             "interface-admin": "界面管理员",
             "autopatrol": "巡查豁免者",
