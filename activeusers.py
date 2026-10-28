@@ -122,7 +122,7 @@ usergroups_params = {
     "format": "json",
     "list": "allusers",
     "formatversion": 2,
-    "augroup": "autopatrol|bot|bureaucrat|interface-admin|patrollers|sysop",
+    "augroup": "autopatrol|bot|bureaucrat|interface-admin|moderators|patrollers|sysop",
     "auprop": "groups",
     "aulimit": "max",
 }
