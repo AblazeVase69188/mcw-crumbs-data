@@ -14,7 +14,7 @@ params = {
     "format": "json",
     "list": "logevents",
     "formatversion": 2,
-    "leprop": "timestamp|user",
+    "leprop": "timestamp|user|details",
     "leaction": "patrol/patrol",
     "lelimit": "max",
 }
@@ -56,7 +56,10 @@ while True:
         input("按回车键退出")
         sys.exit(1)
 
-    patrol_result.extend(patrol_data['query']['logevents'])
+    for item in patrol_data['query']['logevents']:
+        if item["params"].get("auto", False):  # 自动巡查操作不统计
+            continue
+        patrol_result.append(item)
 
     loop_count += 1
     print(f"成功获取第{loop_count}组数据")

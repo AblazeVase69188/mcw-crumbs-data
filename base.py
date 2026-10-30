@@ -183,8 +183,10 @@ def output(filename, data, extension):  # 将文件输出到output文件夹
             output_file.write(data)
 
 
-def sleep():  # 请求间隔
-    if request_interval > 0:
+def sleep(override_interval=None):  # 请求间隔
+    if override_interval is not None and override_interval > 0:
+        time.sleep(override_interval)
+    elif request_interval > 0:
         time.sleep(request_interval)
 
 
